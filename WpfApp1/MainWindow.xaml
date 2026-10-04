@@ -1,0 +1,39 @@
+﻿<Window x:Class="InterpolationDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Interpolation Demo" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель керування -->
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <CheckBox Content="Linear" 
+                      IsChecked="{Binding ShowLinear}" 
+                      Checked="CheckBoxChanged" 
+                      Unchecked="CheckBoxChanged" 
+                      Margin="5"/>
+            <CheckBox Content="Hermite" 
+                      IsChecked="{Binding ShowHermite}" 
+                      Checked="CheckBoxChanged" 
+                      Unchecked="CheckBoxChanged" 
+                      Margin="5"/>
+            <CheckBox Content="Reference" 
+                      IsChecked="{Binding ShowReference}" 
+                      Checked="CheckBoxChanged" 
+                      Unchecked="CheckBoxChanged" 
+                      Margin="5"/>
+
+            <TextBlock Text="h1:" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBox Width="50" Text="{Binding H1, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+            <TextBlock Text="h2:" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBox Width="50" Text="{Binding H2, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+            <Button Content="Generate" Click="CheckBoxChanged" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <!-- Полотно для малювання -->
+        <Canvas x:Name="canvas" Grid.Row="1" Background="White"/>
+    </Grid>
+</Window>
